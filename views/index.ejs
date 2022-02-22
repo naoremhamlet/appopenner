@@ -5,29 +5,78 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <title>Document</title>
+  <title>Branded Link</title>
 </head>
+<style>
+  .domain-text {
+    position:absolute;
+    right:15px;
+    top:8px;
+  }
+  @media only screen and (max-width: 768px) {
+    .form-row {
+      display: flex;
+      flex-direction: column;
+    }
+    .col {
+      margin: 5px 0;
+    }
+    .domain-text {
+      top: 6px;
+    }
+  }
+  @media only screen and (max-width: 500px) {
+    .p-5 {
+      padding: 2rem!important;
+    }
+  }
+  @media only screen and (max-width: 400px) {
+    .p-5 {
+      padding: 1rem!important;
+    }
+  }
+</style>
 <body>
   <div class="container">
     <form class="text-center border border-light p-5" action="/create" method="POST">
 
-        <p class="h4 mb-4">Custom Url</p>
+        <p class="h4 mb-4">Custom Subdomain</p>
     
         <div class="form-row mb-4">
             <div class="col">
-                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="Url" name="url">
+                <input type="text" id="defaultRegisterFormFirstName" class="form-control" placeholder="your url" name="url">
             </div>
             <div class="col" style="position:relative;">
                 <input type="text" id="defaultRegisterFormLastName" class="form-control" placeholder="domain" name="domain">
-                <span style="position:absolute; right:15px; top:8px;">.spawnser.com</span>
+                <span class="domain-text">.spawnser.com</span>
             </div>
         </div>
 
         <button class="btn btn-info my-4 btn-block" type="submit">Generate</button>
     
     </form>
+
+
+    <div>
+      <% if(!message.msg) { %>
+        <div class="alert alert-primary" role="alert">
+          Enter your url and create a custom subdomain
+        </div>
+      <%} else if(message.error == "false") { %>
+      <div class="alert alert-success" role="alert">
+        <%= message.msg %> <br>
+        <a href="http://<%= message.domain %>.<%= APP_DOMAIN %>"><%= message.domain %>.<%= APP_DOMAIN %></a>
+      </div>
+      <%} else { %>
+      <div class="alert alert-danger" role="alert">
+        <%= message.msg %>
+      </div>
+      <% } %>
+    </div>
+
+    <button class="btn" onclick="showLinks();">Show all links</button>
     
-    <table class="table table-striped table-responsive">
+    <table class="table table-striped table-responsive" style="display: none;" id="links-table">
       <thead>
         <tr>
           <th>Domain</th>
@@ -47,4 +96,16 @@
     </table>
   </div>
 </body>
+
+<script>
+  function showLinks() {
+    const table = document.getElementById('links-table')
+    console.log(table.style.display)
+    if(table.style.display=="none") {
+      table.style.display="block"
+    } else {
+      table.style.display="none"
+    }
+  }
+</script>
 </html>

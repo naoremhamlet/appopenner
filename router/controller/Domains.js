@@ -8,7 +8,8 @@ const APP_DOMAIN = process.env.APP_DOMAIN
 
 async function Domains(req, res, next) {
     const domains = await urlObj.find()
-    res.render('index', {domains, APP_DOMAIN})
+    const message = req.query
+    res.render('index', {domains, APP_DOMAIN, message})
 }
 
 async function GotoLink(req, res, next) {
