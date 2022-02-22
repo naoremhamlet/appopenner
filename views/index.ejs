@@ -65,7 +65,7 @@
       <%} else if(message.error == "false") { %>
       <div class="alert alert-success" role="alert">
         <%= message.msg %> <br>
-        <a href="http://<%= message.domain %>.<%= APP_DOMAIN %>"><%= message.domain %>.<%= APP_DOMAIN %></a>
+        <a href="http://<%= message.domain %>.<%= APP_DOMAIN %>" target="_blank"><%= message.domain %>.<%= APP_DOMAIN %></a>
       </div>
       <%} else { %>
       <div class="alert alert-danger" role="alert">
@@ -87,8 +87,8 @@
       <tbody>
         <% domains.forEach(el => { %>
           <tr>
-            <td><a href="http://<%= el.domain %>.<%= APP_DOMAIN %>"><%= el.domain %>.<%= APP_DOMAIN %></a></td>
-            <td><a href="<%= el.url %>"><%= el.url %></a></td>
+            <td><a href="http://<%= el.domain %>.<%= APP_DOMAIN %>" target="_blank"><%= el.domain %>.<%= APP_DOMAIN %></a></td>
+            <td><a href="<%= el.url %>" target="_blank"><%= el.url %></a></td>
             <td><%= el.click %></td>
           </tr>
         <% }) %>
