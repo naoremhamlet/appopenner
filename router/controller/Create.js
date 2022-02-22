@@ -8,8 +8,7 @@ async function CreateLink(req, res, next) {
         domain: req.body.domain.toLowerCase(),
         click: 0
     }
-    await urlObj.create(obj)
-    res.redirect('/')
+    await urlObj.create(obj).then(()=> res.redirect('/')).catch(()=>res.send("Link already exists"))
 }
 
 

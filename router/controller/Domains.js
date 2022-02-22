@@ -13,7 +13,6 @@ async function Domains(req, res, next) {
 
 async function GotoLink(req, res, next) {
     const url = await urlObj.findOne({ domain: req.params.subdomain })
-    console.log(url)
     if (url) {
         url.click++
         url.save()

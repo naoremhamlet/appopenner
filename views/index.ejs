@@ -38,7 +38,7 @@
       <tbody>
         <% domains.forEach(el => { %>
           <tr>
-            <td><a href="http://<%= el.domain %>.<%= APP_DOMAIN %>:8000"><%= el.domain %>.<%= APP_DOMAIN %>:8000</a></td>
+            <td><a href="http://<%= el.domain %>.<%= APP_DOMAIN %>"><%= el.domain %>.<%= APP_DOMAIN %></a></td>
             <td><a href="<%= el.url %>"><%= el.url %></a></td>
             <td><%= el.click %></td>
           </tr>
